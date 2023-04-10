@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Text, Button } from "react-native-paper";
 import { StatusBar, StyleSheet, View, ImageBackground } from "react-native";
-import { getFavoritesRecipes } from "../services/RecipeAPI";
-import { useAuth } from "../context/AuthContext";
 
 export default function HomeScreen({ navigation }) {
   
@@ -25,7 +23,7 @@ export default function HomeScreen({ navigation }) {
           onPress={goToSearchIngridientScreen}
           style={styles.button}
           mode="contained"
-          buttonColor="#1A85E5"
+          buttonColor="#2ACA1D"
         >
           Let's start!
         </Button>
@@ -37,9 +35,8 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     marginTop: "auto",
-    marginBottom: "auto",
-    marginStart: "auto",
-    marginEnd: "auto",
+    marginBottom: 'auto',
+    textAlign: 'center'
   },
   imageBackground: {
     marginTop: StatusBar.currentHeight,
@@ -51,6 +48,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 36,
     fontWeight: "bold",
+    color: '#2ACA1D'
   },
   subtitle: {
     textAlign: "center",

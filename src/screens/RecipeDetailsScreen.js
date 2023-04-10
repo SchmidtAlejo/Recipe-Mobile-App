@@ -90,8 +90,7 @@ export default function RecipeDetailsScreen({ route, navigation }) {
           }}
           resizeMode="cover"
         >
-          <View style={styles.likePosition}>
-          </View>
+          <View style={styles.likePosition}></View>
           <View style={styles.buttonContainer}>
             <View style={styles.button}>
               <LikeButton recipeId={recipeId} />
@@ -122,6 +121,12 @@ export default function RecipeDetailsScreen({ route, navigation }) {
       >
         {remderIngridients()}
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.textContiner}
+        onPress={() => navigation.navigate("Comments", {recipeId: recipeId})}
+      >
+        <Text style={styles.headersText}>Comments</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -140,7 +145,7 @@ const styles = StyleSheet.create({
     marginHorizontal: "2%",
     justifyContent: "space-between",
     height: "100%",
-    flexDirection: 'row'
+    flexDirection: "row",
   },
   button: {
     alignItems: "center",

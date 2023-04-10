@@ -62,7 +62,8 @@ export default function RegisterScreen() {
           <View style={styles.inputContainer}>
             <Text style={styles.subtitle}>Complete the fields</Text>
             <TextInput
-              activeUnderlineColor='grey'
+              activeUnderlineColor='#2ACA1D'
+              underlineColor='#2ACA1D'
               mode='flat'
               label='Email'
               value={email}
@@ -71,7 +72,8 @@ export default function RegisterScreen() {
               keyboardType={'email-address'}
             />
             <TextInput
-              activeUnderlineColor='grey'
+              activeUnderlineColor='#2ACA1D'
+              underlineColor='#2ACA1D'
               mode='flat'
               label='Username'
               value={username}
@@ -80,7 +82,8 @@ export default function RegisterScreen() {
               keyboardType={'email-address'}
             />
             <TextInput
-              activeUnderlineColor='grey'
+              activeUnderlineColor='#2ACA1D'
+              underlineColor='#2ACA1D'
               mode='flat'
               label='Password'
               value={password}
@@ -89,7 +92,8 @@ export default function RegisterScreen() {
               secureTextEntry={true}
             />
             <TextInput
-              activeUnderlineColor='grey'
+              activeUnderlineColor='#2ACA1D'
+              underlineColor='#2ACA1D'
               mode='flat'
               label='Confirm password'
               value={confirmPassword}
@@ -102,7 +106,7 @@ export default function RegisterScreen() {
             style={styles.button}
             onPress={onSubmit}
             mode={'contained'}
-            buttonColor='#1A85E5'
+            buttonColor='#2ACA1D'
           >
             Submit
           </Button>

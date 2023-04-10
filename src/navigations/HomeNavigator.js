@@ -5,6 +5,7 @@ import SearchIngridientScreen from "../screens/SearchIngridientScreen";
 import DrawerNavigator from "./DrawerNavigator";
 import RecipesScreen from "../screens/RecipesScreen";
 import RecipeDetailsScreen from "../screens/RecipeDetailsScreen";
+import CommentsScreen from "../screens/CommentsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,13 @@ export default function HomeNavigator() {
         component={RecipeDetailsScreen}
         options={{
           headerTitle: "Details"
+        }}
+      />
+      <Stack.Screen
+        name="Comments"
+        component={CommentsScreen}
+        options={{
+          headerTitle: "Comments"
         }}
       />
     </Stack.Navigator>

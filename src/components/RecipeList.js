@@ -2,7 +2,7 @@ import React from "react";
 import { FlatList } from "react-native";
 import RecipeItem from "../components/RecipeItem";
 
-export default function RecipeList({recipes, navigation}) {
+export default function RecipeList({ recipes, navigation }) {
   return (
     <FlatList
       data={recipes}

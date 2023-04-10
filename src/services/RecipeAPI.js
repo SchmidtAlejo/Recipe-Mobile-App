@@ -114,9 +114,8 @@ export async function addFavorite(token, recipeId) {
 }
 
 export async function removeFavorite(token, recipeId) {
-        const response = await fetch((API_HOST + '/favorites'), {
+        const response = await fetch((API_HOST + '/favorites/'+recipeId), {
         method: 'DELETE',
-        body: JSON.stringify({recipeId: recipeId}),
         headers: {
             "Content-type": "application/json",
             'Authorization': token
@@ -152,9 +151,82 @@ export async function addLike(token, recipeId) {
 }
 
 export async function removeLike(token, recipeId) {
-        const response = await fetch((API_HOST + '/likes'), {
+        const response = await fetch((API_HOST + '/likes/'+ recipeId), {
         method: 'DELETE',
-        body: JSON.stringify({recipeId: recipeId}),
+        headers: {
+            "Content-type": "application/json",
+            'Authorization': token
+        }
+    });
+    const result = response.json();
+    return result;
+}
+
+export async function getComments(token, recipeId) {
+    const response = await fetch(`${API_HOST}/comments/${recipeId}`, {
+        method: 'GET',
+        headers: {
+            "Content-type": "application/json",
+            'Authorization': token
+        }
+    });
+    const result = response.json();
+    return result;
+}
+
+export async function addComment(token, recipeId, text) {
+    const response = await fetch((API_HOST + '/comments'), {
+        method: 'POST',
+        body: JSON.stringify({recipeId: recipeId, text: text}),
+        headers: {
+            "Content-type": "application/json",
+            'Authorization': token
+        }
+    });
+    const result = response.json();
+    return result;
+}
+
+export async function removeComment(token, commentId) {
+        const response = await fetch((API_HOST + `/comments/${commentId}`), {
+        method: 'DELETE',
+        headers: {
+            "Content-type": "application/json",
+            'Authorization': token
+        }
+    });
+    const result = response.json();
+    return result;
+}
+
+export async function getCommentLike(token, commentId) {
+    const response = await fetch(`${API_HOST}/likeComments/${commentId}`, {
+        method: 'GET',
+        headers: {
+            "Content-type": "application/json",
+            'Authorization': token
+        }
+    });
+    const result = response.json();
+    return result;
+}
+
+export async function addCommentLike(token, commentId) {
+    const response = await fetch((API_HOST + '/likeComments'), {
+        method: 'POST',
+        body: JSON.stringify({commentId: commentId}),
+        headers: {
+            "Content-type": "application/json",
+            'Authorization': token
+        }
+    });
+    const result = response.json();
+    return result;
+}
+
+export async function removeCommentLike(token, commentLikeId) {
+        const response = await fetch((API_HOST + `/likeComments/${commentLikeId}`), {
+        method: 'DELETE',
         headers: {
             "Content-type": "application/json",
             'Authorization': token

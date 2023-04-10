@@ -10,6 +10,8 @@ export default function LikeButton({ recipeId }) {
   const { token, user } = useAuth();
   const [likes, setLikes] = useState([]);
 
+  console.log(token, user);
+
   useEffect(() => {
     const fetch =  async()=>{
         const result = await getLikes(token, recipeId)
@@ -19,7 +21,6 @@ export default function LikeButton({ recipeId }) {
                 setLike(true)
             }
         }
-        //console.log(1);
     }
     fetch()
   }, []);

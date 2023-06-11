@@ -20,6 +20,7 @@ export default function CommentsScreen({ route, navigation }) {
   
   const fetch = async () => {
     const response = await getComments(token, recipeId);
+    console.log(response.comments[0].User);
     setComments(response.comments);
   };
 

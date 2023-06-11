@@ -12,7 +12,7 @@ export default function CommentItem({ comment, user, remove }) {
     <View style={styles.container}>
       <View style={{flex: 1}}>
         <View style={styles.commentContainer}>
-          <Text style={styles.user}>{user.username}</Text>
+          <Text style={styles.user}>{comment.User.username}</Text>
           <Text style={styles.comment}>{comment.text}</Text>
         </View>
         {renderRemover()}

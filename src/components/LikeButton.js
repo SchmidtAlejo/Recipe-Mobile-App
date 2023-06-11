@@ -51,7 +51,7 @@ export default function LikeButton({ recipeId }) {
           iconColor={like ? "red" : "grey"}
           onPress={() => onPress()}
         />
-        <Text style={styles.text}>{likes.length} Me gusta</Text>
+        <Text style={styles.text}>{likes.length} Likes</Text>
       </View>
     </TouchableOpacity>
   );

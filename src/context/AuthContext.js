@@ -14,24 +14,25 @@ export const AuthProvider = ({ children }) => {
   async function Login(email, password) {
     const response = await RecipeAPI.loginUser(email, password);
     setUser(response.user);
-    const token= `Bearer ${response.token}`;
+    const token = `Bearer ${response.token}`;
     setToken(token);
-    await AsyncStorage.setItem('token', token);
+    await AsyncStorage.setItem("token", token);
     setIsSigned(true);
   }
 
   async function LoginByToken(token) {
     const response = await RecipeAPI.getUser(token);
-    console.log(response);
-    setUser(response);
-    setToken(token);
-    setIsSigned(true);
+    if (response.id) {
+      setUser(response);
+      setToken(token);
+      setIsSigned(true);
+    }
   }
 
   async function Logout() {
     setUser(null);
     setIsSigned(false);
-    await AsyncStorage.setItem('token', '');
+    await AsyncStorage.setItem("token", "");
   }
 
   async function Register(email, username, password) {

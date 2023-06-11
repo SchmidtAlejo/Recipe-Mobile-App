@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInput, Button, Text, Snackbar } from "react-native-paper";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   View,
   ActivityIndicator,
@@ -15,8 +15,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function LoginScreen({ navigation }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [email, setEmail] = useState("schmidtalejo@gmail.com");
-  const [password, setPassword] = useState("password");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { Login, LoginByToken } = useAuth();
   const [visible, setVisible] = useState(false);
   const [snackbarText, setSnackbarText] = useState("");
@@ -28,10 +28,13 @@ export default function LoginScreen({ navigation }) {
     if (token) {
       setIsLoading(true);
       await LoginByToken(token);
+      setIsLoading(false);
     }
   }
 
-  goTo();
+  useEffect(() => {
+    goTo();
+  }, []);
 
   const onSubmit = async () => {
     if (isIncompleteData) {
@@ -43,7 +46,6 @@ export default function LoginScreen({ navigation }) {
       setIsLoading(true);
       await Login(email, password);
     } catch (err) {
-      console.log(err);
       setSnackbarText("Wrong email and/or password");
       setVisible(true);
       setIsLoading(false);

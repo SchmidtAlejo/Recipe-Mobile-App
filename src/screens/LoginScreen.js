@@ -20,6 +20,7 @@ export default function LoginScreen({ navigation }) {
   const { Login, LoginByToken } = useAuth();
   const [visible, setVisible] = useState(false);
   const [snackbarText, setSnackbarText] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const isIncompleteData = !email || !password;
 
@@ -55,6 +56,10 @@ export default function LoginScreen({ navigation }) {
 
   const onDismissSnackBar = () => setVisible(false);
 
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -76,16 +81,25 @@ export default function LoginScreen({ navigation }) {
                 style={styles.input}
                 keyboardType={"email-address"}
               />
-              <TextInput
-                activeUnderlineColor="#2ACA1D"
-                underlineColor="#2ACA1D"
-                mode="flat"
-                label="Password"
-                value={password}
-                onChangeText={(text) => setPassword(text)}
-                style={styles.input}
-                secureTextEntry={true}
-              />
+              <View>
+                <TextInput
+                  activeUnderlineColor="#2ACA1D"
+                  underlineColor="#2ACA1D"
+                  mode="flat"
+                  label="Password"
+                  value={password}
+                  onChangeText={(text) => setPassword(text)}
+                  style={styles.input}
+                  secureTextEntry={!isPasswordVisible}
+                  right={
+                    <TextInput.Icon
+                      onPress={togglePasswordVisibility}
+                      icon="eye"
+                      forceTextInputFocus={false}
+                    />
+                  }
+                />
+              </View>
             </View>
             <Button
               style={styles.button}

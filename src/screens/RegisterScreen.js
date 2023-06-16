@@ -21,6 +21,8 @@ export default function RegisterScreen() {
   const { Register } = useAuth();
   const [visible, setVisible] = useState(false);
   const [snackbarText, setSnackbarText] = useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
 
   const isIncompleteData = !email || !password || !confirmPassword;
 
@@ -47,6 +49,14 @@ export default function RegisterScreen() {
   };
 
   const onDismissSnackBar = () => setVisible(false);
+  
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
+  };
 
   return (
     <View style={styles.container}>
@@ -89,7 +99,14 @@ export default function RegisterScreen() {
               value={password}
               onChangeText={(text) => setPassword(text)}
               style={styles.input}
-              secureTextEntry={true}
+                  secureTextEntry={!isPasswordVisible}
+                  right={
+                    <TextInput.Icon
+                      onPress={togglePasswordVisibility}
+                      icon="eye"
+                      forceTextInputFocus={false}
+                    />
+                  }
             />
             <TextInput
               activeUnderlineColor='#2ACA1D'
@@ -99,7 +116,14 @@ export default function RegisterScreen() {
               value={confirmPassword}
               onChangeText={(text) => setConfirmPassword(text)}
               style={styles.input}
-              secureTextEntry={true}
+                  secureTextEntry={!isConfirmPasswordVisible}
+                  right={
+                    <TextInput.Icon
+                      onPress={toggleConfirmPasswordVisibility}
+                      icon="eye"
+                      forceTextInputFocus={false}
+                    />
+                  }
             />
           </View>
           <Button

@@ -1,4 +1,4 @@
-const API_HOST = "http://192.168.1.10:3000/api";
+const API_HOST = "https://recipeapi-production-06e1.up.railway.app/api";
 
 export async function getIngridients(token, query) {
     const response = await fetch(`${API_HOST}/recipes/?ingridientSearch=${query}`, {
